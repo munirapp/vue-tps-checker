@@ -1,0 +1,120 @@
+$bodyColor : #E7E7E7;
+$blueColor: #276CDA;
+$dekstopSizeMin: 700px;
+$mobileSizeMax: 699px;
+
+html,body {
+    background-color: $bodyColor;
+    height: 100%;
+}
+
+
+/*  Override Bulma CSS  */
+
+.dropdown {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.dropdown-menu {
+    position: relative;
+    margin-bottom: 7px;
+}
+
+/*  Override Bulma CSS  */
+
+.bg-blue {
+    width: 100%;
+    height: 35%;
+    background: $blueColor;
+    position: fixed;
+}
+
+.container {
+    h1{
+        text-align: center;
+        font-size: 25pt;
+        color: #ffffff;
+        padding-bottom: 20px;
+    }
+}
+
+.top-main {
+    padding-top: 35px;
+}
+
+.pad-right{
+    padding-right: 5px;
+}
+
+.content-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @media screen and (min-width: $dekstopSizeMin) {
+        .box-form{
+            width:400px;
+        }
+    }
+
+    @media screen and(max-width: $mobileSizeMax){
+        .box-form{
+            width:340px;
+        }    
+    }
+}
+
+.result-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    h1{
+        font-size: 40pt;
+        color: black;
+    }
+    h3 {
+        font-size: 18pt;
+        font-style: italic;
+    }
+    h2{
+        font-size: 25pt;
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and(min-width: $dekstopSizeMin){
+    .footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px 20px;
+    }
+}
+
+@media screen and(max-width: $mobileSizeMax){
+    .footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+/* Transition Effect */
+
+.slide-fade-enter-active {
+transition: all .3s ease;
+}
+.slide-fade-leave-active {
+transition: all .1s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+transform: translateX(10px);
+opacity: 0;
+}
+
+/* Transition Effect */

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simpel TPS Checker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/style.css">
+</head>
+<body>
+    <div class="bg-blue"></div>
+    <div id="app" class="container top-main">
+        <h1>Cek TPS v.1.0.0</h1>
+        <div class="content-main">
+            <transition name="slide-fade">
+                <div class="box box-form" v-if="formShow">
+                    <form method="POST" @submit.prevent="cekTPS" @keydown="dataResource.clearError($event.target.name)">
+                        <div class="field">
+                            <label class="label">Nama</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input type="text" class="input" :class="{ 'is-danger':errorInput.dataNama }" placeholder="Masukkan Nama" name="dataNama" id="dataNama" v-model="dataResource.dataInput.dataNama">
+                                <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+                                <span v-if="errorInput.dataNama" class="icon is-small is-right"><i class="fa fa-exclamation-triangle"></i></i></span>
+                                <p v-if="errorInput.dataNama" v-text="dataResource.getErrorValue('dataNama')" class="help is-danger"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Nomor KTP(NIK)</label>
+                            <div class="control has-icons-left has-icons-right"> 
+                                <input type="text" class="input" :class="{ 'is-danger':errorInput.dataNIK }" placeholder="Masukkan Nomor KTP/NIK" name="dataNIK" id="dataNIK" v-model="dataResource.dataInput.dataNIK">
+                                <span class="icon is-small is-left"><i class="fa fa-id-card"></i></span>
+                                <span v-if="errorInput.dataNIK" class="icon is-small is-right"><i class="fa fa-exclamation-triangle"></i></i></span>
+                                <p v-if="errorInput.dataNIK" v-text="dataResource.getErrorValue('dataNIK')" class="help is-danger"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button type="submit" class="button is-link"><i class="fa fa-search pad-right" aria-hidden="true"></i> Cek TPS</button>
+                        </div>
+                    </form>
+                </div>
+            </transition>
+            <transition name="slide-fade">
+                <div class="box box-form" v-if="resultShow">
+                    <a @click="toggleForm"><- Kembali ke Form Pengecekan</a><br>
+                    <transition name="slide-fade">
+                        <div class="result-content" v-if="dataResource.failData">
+                            <h1><i class="fa fa-meh-o" aria-hidden="true"></i></h1>
+                            <h3 v-text="dataResource.failData"></h3>
+                        </div>
+                    </transition>
+                    <transition name="slide-fade">
+                        <div class="result-content" v-if="dataResource.successData">
+                            <h2><b>TPS {{ dataResource.successData.tps }}</b></h2>
+                            <table class="table table is-bordered is-fullwidth">
+                                <tbody>
+                                    <tr class="is-selected">
+                                        <td>Nama</td>
+                                        <td v-text="dataResource.successData.nama"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>JK</td>
+                                        <td v-text="(dataResource.successData.jenis_kelamin == 'L') ? 'Pria' : 'Wanita'"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kelurahan</td>
+                                        <td v-text="dataResource.successData.namaKelurahan"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kecamatan</td>
+                                        <td v-text="dataResource.successData.namaKecamatan"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Provinsi</td>
+                                        <td v-text="dataResource.successData.namaPropinsi"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </transition>
+                </div>
+            </transition>
+        </div>
+        <div class="top-main content-main">
+           <div class="box box-form">
+               <h2>FAQ</h2>
+               <faq question="Darimana sumber data aplikasi ini?">
+                Sumber Data yang digunakan dalam Aplikasi ini berasal dari Redirect API dari website resmi KPU.
+                </faq>
+               <faq question="Apakah Aplikasi ini Aman?">
+                Ya, 100% Aplikasi ini tidak menyimpan inputan data NIK dan Nama Anda hanya meredirect data tersebut ke Web API resmi KPU. Namun, apabila data Anda tersimpan di Web KPU maka itu di luar lingkup Aplikasi ini.
+               </faq>
+           </div>
+        </div>
+        <div class="top-main content-main">
+            <img src="asset/made-with-bulma.png" alt="" width="200">
+        </div>
+
+    </div>
+    <div class="footer">
+            <p>Created by Munir A.P - <a href="https://opensource.org/licenses/mit-license.html">MIT License</a> - <a href="https://github.com/munirapp/simpel-tps-checker">Github</a></p>
+    </div>
+    <script src="public/app.js"></script>
+</body>
+</html>
