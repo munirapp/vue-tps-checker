@@ -70,7 +70,9 @@ new Vue({
         cekTPS(){
             let validate = this.dataResource.validate(this.dataResource.dataInput);
             if(!validate){
-                this.dataResource.post('http://localhost/testing/cektps/api.php');
+                this.dataResource.post('http://localhost/testing/cektps/api.php')
+                .then(data => this.dataResource.loading = false)
+                .catch(error => console.log(error));
                 this.toggleForm();
             }
             this.errorInput = validate;
@@ -83,9 +85,6 @@ new Vue({
             }
             this.resultShow = false;
             this.formShow = true;
-        },
-        onResultFail(tes){
-            alert(tes);
         }
     }
 });

@@ -45,6 +45,11 @@
                 <div class="box box-form" v-if="resultShow">
                     <a @click="toggleForm"><- Kembali ke Form Pengecekan</a><br>
                     <transition name="slide-fade">
+                        <div class="loader-page" v-if="dataResource.loading">
+                            <b>Loading...</b>
+                        </div>
+                    </transition>
+                    <transition name="slide-fade">
                         <div class="result-content" v-if="dataResource.failData">
                             <h1><i class="fa fa-meh-o" aria-hidden="true"></i></h1>
                             <h3 v-text="dataResource.failData"></h3>
@@ -82,7 +87,7 @@
                 </div>
             </transition>
         </div>
-        <div class="top-main content-main">
+        <div class="top-main content-main" v-if="formShow">
            <div class="box box-form">
                <h2>FAQ</h2>
                <faq question="Darimana sumber data aplikasi ini?">

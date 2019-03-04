@@ -1,15 +1,29 @@
+import { resolve } from "path";
+import { reject } from "q";
+
 class DSource{
     constructor(dataInput){
         this.dataInput = dataInput;
         this.failData = false;
         this.successData = false;
+        this.loading = false;
         this.errors = {};
     }
 
     post(url){
-        axios.post(url,this.data())
-        .then(this.sendSuccess.bind(this))
-        .catch(this.sendFail.bind(this)); 
+        this.failData = false;
+        this.successData = false;
+        this.loading = true;
+        return new Promise((resolve, reject) => {
+            axios.post(url,this.data())
+            .then(response=>{
+                this.sendSuccess(response.data);
+                resolve(response.data);
+            })
+            .catch(error => {
+                reject(error.response.data);
+            });
+        }); 
     }
 
     data(){
@@ -22,22 +36,17 @@ class DSource{
         this.dataInput.dataNIK = '';
     }
 
-    sendSuccess(response){
+    sendSuccess(data){
         this.reset();
-        if(response.data.message == 'failed'){
+        if(data.message == 'failed'){
             if(this.successData){  this.successData = false;   }
-            this.failData = response.data.data.pesan; 
+            this.failData = data.data.pesan; 
         }
 
-        if(response.data.message == 'success'){
+        if(data.message == 'success'){
             if(this.failData) { this.failData = false; }
-            this.successData = response.data.data;
+            this.successData = data.data;
         }
-    }
-
-    sendFail(error){
-        alert('Ups, sepertinya server mengalami gangguan');
-        console.log(error);
     }
 
     validate(data){
