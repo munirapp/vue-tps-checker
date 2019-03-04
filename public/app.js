@@ -14152,7 +14152,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
       let validate = this.dataResource.validate(this.dataResource.dataInput);
 
       if (!validate) {
-        this.dataResource.post('http://localhost/testing/cektps/api.php').then(data => this.dataResource.loading = false).catch(error => console.log(error));
+        this.dataResource.post('https://labs.munirapp.web.id/cektps/api.php').then(data => this.dataResource.loading = false).catch(error => console.log(error));
         this.toggleForm();
       }
 
