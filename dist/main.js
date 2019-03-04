@@ -70,7 +70,7 @@ new Vue({
         cekTPS(){
             let validate = this.dataResource.validate(this.dataResource.dataInput);
             if(!validate){
-                this.dataResource.post('http://localhost/testing/cektps/api.php')
+                this.dataResource.post('https://labs.munirapp.web.id/cektps/api.php')
                 .then(data => this.dataResource.loading = false)
                 .catch(error => console.log(error));
                 this.toggleForm();
