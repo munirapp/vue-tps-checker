@@ -2,9 +2,11 @@ import Vue from 'vue';
 import axios from 'axios';
 import DSource from './core/DSource';
 
-window.axios = axios;
-window.vue = Vue;
-window.dataResource = DSource;
+Object.assign({
+    Vue,
+    axios,
+    DSource
+})
 
 Vue.component('faq',{
     props: {
