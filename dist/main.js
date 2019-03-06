@@ -2,7 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import DSource from './core/DSource';
 
-Object.assign({
+Object.assign(window,{
     Vue,
     axios,
     DSource

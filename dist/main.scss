@@ -84,24 +84,12 @@ html,body {
     }
 }
 
-@media screen and(min-width: $dekstopSizeMin){
-    .footer {
+.footer {
         text-align: center;
         margin-top: 30px;
         padding: 20px 20px;
-    }
 }
 
-@media screen and(max-width: $mobileSizeMax){
-    .footer {
-        text-align: center;
-        margin-top: 30px;
-        padding: 20px 20px;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-}
 
 /* Transition Effect */
 
