@@ -1,5 +1,5 @@
 # simpel-vue-tps-checker
-This is a simple app for check of Indonesian Voting place by Name and NIK (Indonesian Id card number)
+This is a simple application for check of Indonesian Voting place by Name and NIK (Indonesian Id card number)
 
 # Setup
 
