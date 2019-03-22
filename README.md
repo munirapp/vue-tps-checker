@@ -24,11 +24,11 @@ npm run prod
 ```
 
 # Reference
-https://docs.npmjs.com/<br>
-https://vuejs.org/v2/guide/<br>
-https://webpack.js.org/<br>
-https://github.com/axios/axios<br>
-https://bulma.io/documentation/<br>
+- https://docs.npmjs.com/
+- https://vuejs.org/v2/guide/
+- https://webpack.js.org/
+- https://github.com/axios/axios
+- https://bulma.io/documentation/
 
 # Technologies
 NPM, VueJS 2.0, ES2015, Webpack 3.0, Axios, Bulma CSS
@@ -38,8 +38,8 @@ NPM, VueJS 2.0, ES2015, Webpack 3.0, Axios, Bulma CSS
 - Internet Connection (Not Support Offline) <br>
 
 # Contact-me
-http://telegram.me/mumundira <br>
-http://fb.me/m.munir.ap<br>
+- http://telegram.me/mumundira <br>
+- http://fb.me/m.munir.ap<br>
 
 
 
